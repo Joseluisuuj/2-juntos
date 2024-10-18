@@ -7,13 +7,29 @@
     <style>
         body {
             background-image: url('fondo pagina web.jpg'); /* Cambia esta ruta por la ubicación de tu imagen de corazones */
-            background-size: cover;
+            background-size: cover; /* Cambia esto si quieres ver una parte específica del fondo */
             background-repeat: no-repeat;
-            background-attachment: fixed;
+            /* background-attachment: fixed; */ /* Eliminado para evitar problemas en móviles */
             font-family: Arial, sans-serif;
             color: #333;
             text-align: center;
             padding: 20px;
+        }
+
+        /* Media query para dispositivos móviles */
+        @media (max-width: 600px) {
+            body {
+                background-size: contain; /* Asegura que la imagen de fondo se ajuste en pantallas pequeñas */
+            }
+
+            img {
+                width: 90%; /* Ajusta el tamaño de las imágenes a un porcentaje más pequeño en móviles */
+                max-width: 300px; /* Limita el tamaño máximo de las imágenes */
+            }
+
+            h1, h2, p {
+                font-size: 16px; /* Reduce el tamaño de la fuente para móviles */
+            }
         }
 
         header {
@@ -122,36 +138,29 @@
     <!-- Nueva sección añadida -->
     <main>
         <section>
-            <h2>Por más veranos asi</h2>
-            <p>La verdad que estos dos veranos que hemos estado juntos podria decir perfectamente que los repetiria sin pensarmelo dos veces. Yo solo le pondria una pega a estos dos veranos ya que no nos vemos todos los dias, pero bueno los dias que nos veiamos los disfrutabamos todo lo que podiamos. En todo el verano nos habremos hecho 10 fotos como maximo asi que no hay casi fotos junos. Esto cambiara!!</p>
+            <h2>Por más veranos así</h2>
+            <p>La verdad que estos dos veranos que hemos estado juntos podría decir perfectamente que los repetiría sin pensármelo dos veces. Yo solo le pondría una pega a estos dos veranos, ya que no nos vemos todos los días, pero bueno, los días que nos veíamos los disfrutábamos todo lo que podíamos. En todo el verano nos habremos hecho 10 fotos como máximo así que no hay casi fotos juntos. ¡Esto cambiará!</p>
         </section>
     </main>
 
     <!-- Carrusel de imágenes original -->
     <div class="carousel">
-<div class="carousel-images">
+        <div class="carousel-images">
             <img src="Fotos web/imagen3.jpeg" alt="Imagen 3">
         </div>
         <div class="carousel-images">
             <img src="Fotos web/imagen4.jpeg" alt="Imagen 4">
         </div>
-	<div class="carousel-images">
+        <div class="carousel-images">
             <img src="Fotos web/imagen5.jpeg" alt="Imagen 5">
         </div>
-        
     </div>
 
     <!-- Cuarta sección -->
     <main>
         <section>
-            <h2>Por ultimo</h2>
-            <p>Como podrás haber visto, te he hecho una página web desde cero en la que hay fotos nuestras de algunos momentos especiales y otros no tan especiales, pero que dan gusto recordar. Nunca dejes de abrazarme ni de besarme, y tampoco dejes nunca de quererme de esa forma tan fría, porque sí, eres más fría que la nieve (no te pienses que eres tú la que da los abrazos ni los besos, que ese soy yo). Pero bueno, dejando eso a un lado, se podría decir que las tardes en las que bajamos un poco la persiana, echamos la cortina, nos abrazamos y "dormimos la siesta", jejeje, son las mejores.
-<section>
-<p>Tampoco podemos olvidar las tardes de skincare, ya que es el momento de máxima relajación en el que tú disfrutas echándome cremas, poniéndome maquillaje o simplemente quitándome granos de cualquier parte del cuerpo, y yo me relajo. En el verano, los días son más de piscina, pero siguen siendo igual de divertidos o incluso más (chapoteando y mojándote el pelo).
-<section>
-<p>Sinceramente, a veces pienso cómo serían esos mismos días sin ti; serían mucho más aburridos por más que hubiera quedado con mis amigos o algo, ya que el tiempo que pasas con tu novia, por mucho que la gente diga que los amigos no se van o que tienes que dedicarles más tiempo, eso son tonterías, porque los amigos no te van a cuidar el día de mañana si te pones malo ni tampoco vas a formar una familia con ellos. A lo mejor no te acordarás, pero hace un tiempo pensaba lo contrario, pero con el paso del tiempo te das cuenta de que los amigos hacen falta en la vida, pero tener una pareja es un pilar fundamental, ya que aprendemos juntos, crecemos juntos, y al final las cosas se logran en pareja. Solo hace falta mirar alrededor para darse cuenta de que, tanto a nivel personal como en pareja, no lo hacemos mal, porque ahora mismo, si no nos tuviéramos, no me quiero ni imaginar lo perdido que estaría en la vida en general.
-
-Bueno, pues ya acabando, solo me faltaría decirte que te quiero.</p>
+            <h2>Por último</h2>
+            <p>Como podrás haber visto, te he hecho una página web desde cero en la que hay fotos nuestras de algunos momentos especiales y otros no tan especiales, pero que dan gusto recordar. Nunca dejes de abrazarme ni de besarme, y tampoco dejes nunca de quererme de esa forma tan fría, porque sí, eres más fría que la nieve (no te pienses que eres tú la que da los abrazos ni los besos, que ese soy yo). Pero bueno, dejando eso a un lado, se podría decir que las tardes en las que bajamos un poco la persiana, echamos la cortina, nos abrazamos y "dormimos la siesta", jejeje, son las mejores.</p>
         </section>
     </main>
 
@@ -189,30 +198,3 @@ Bueno, pues ya acabando, solo me faltaría decirte que te quiero.</p>
 
     <script>
         let slideIndexes = [0, 0, 0, 0]; // Índices de las imágenes para cada carrusel
-
-        function showSlides(carouselIndex) {
-            let carousels = document.getElementsByClassName("carousel");
-            let slides = carousels[carouselIndex].getElementsByClassName("carousel-images");
-            
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-                slides[i].style.opacity = 0;
-            }
-            slideIndexes[carouselIndex]++;
-            if (slideIndexes[carouselIndex] > slides.length) { slideIndexes[carouselIndex] = 1; }
-            
-            slides[slideIndexes[carouselIndex] - 1].style.display = "block";
-            setTimeout(() => {
-                slides[slideIndexes[carouselIndex] - 1].style.opacity = 1;
-            }, 50);
-
-            setTimeout(() => showSlides(carouselIndex), 3500);
-        }
-
-        // Iniciar los carruseles automáticamente
-        for (let i = 0; i < document.getElementsByClassName("carousel").length; i++) {
-            showSlides(i);
-        }
-    </script>
-</body>
-</html>
