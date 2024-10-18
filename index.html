@@ -7,9 +7,10 @@
     <style>
         body {
             background-image: url('fondo pagina web.jpg'); /* Cambia esta ruta por la ubicación de tu imagen de corazones */
-            background-size: cover; /* Cambia esto si quieres ver una parte específica del fondo */
-            background-repeat: no-repeat;
-            /* background-attachment: fixed; */ /* Eliminado para evitar problemas en móviles */
+            background-size: cover; /* Cambia a contain si ves que se ve mejor */
+            background-repeat: no-repeat; /* Puedes probar a quitar esto */
+            background-position: center; /* Centrar la imagen de fondo */
+            /* background-attachment: fixed; */ /* Asegúrate de que esta línea esté comentada o eliminada */
             font-family: Arial, sans-serif;
             color: #333;
             text-align: center;
@@ -20,6 +21,7 @@
         @media (max-width: 600px) {
             body {
                 background-size: contain; /* Asegura que la imagen de fondo se ajuste en pantallas pequeñas */
+                background-repeat: no-repeat; /* Prueba a eliminar esta propiedad */
             }
 
             img {
@@ -198,3 +200,26 @@
 
     <script>
         let slideIndexes = [0, 0, 0, 0]; // Índices de las imágenes para cada carrusel
+
+        function showSlides(carouselIndex) {
+            let carousels = document.getElementsByClassName("carousel");
+            let slides = carousels[carouselIndex].getElementsByClassName("carousel-images");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+                slides[i].style.opacity = 0; // Establece la opacidad en 0 al ocultar
+            }
+            slideIndexes[carouselIndex]++; // Incrementa el índice de la diapositiva
+            if (slideIndexes[carouselIndex] >= slides.length) {
+                slideIndexes[carouselIndex] = 0; // Reinicia el índice si es mayor que la cantidad de imágenes
+            }
+            slides[slideIndexes[carouselIndex]].style.display = "block"; 
+            slides[slideIndexes[carouselIndex]].style.opacity = 1; // Establece la opacidad en 1 al mostrar
+            setTimeout(() => showSlides(carouselIndex), 3000); // Cambia de imagen cada 3 segundos
+        }
+
+        for (let i = 0; i < slideIndexes.length; i++) {
+            showSlides(i); // Inicia el carrusel para cada índice
+        }
+    </script>
+</body>
+</html>
